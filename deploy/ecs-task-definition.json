@@ -1,0 +1,20 @@
+{
+  "family": "cicd-task",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "512",
+  "memory": "1024",
+  "containerDefinitions": [
+    {
+      "name": "cicd-container",
+      "image": "925213028316.dkr.ecr.ap-south-1.amazonaws.com/cicd-fundamentals:latest",
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "protocol": "tcp"
+        }
+      ],
+      "essential": true
+    }
+  ]
+}
