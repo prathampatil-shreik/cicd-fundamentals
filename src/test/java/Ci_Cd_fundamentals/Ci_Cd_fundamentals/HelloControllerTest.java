@@ -18,7 +18,7 @@ class HelloControllerTest {
     @Test
     void healthEndpointShouldReturnOk() {
         String response = restTemplate.getForObject("http://localhost:" + port + "/health", String.class);
-        assertThat(response).isEqualTo("OK");
+        assertThat(response).isEqualTo("WRONG RESPONSE");
     }
 
     @Test
