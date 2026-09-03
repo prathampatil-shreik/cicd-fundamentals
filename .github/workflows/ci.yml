@@ -27,10 +27,12 @@ jobs:
       # Step 3: Run tests — pipeline fails here if any test fails
       - name: Run tests
         run: mvn test
+        working-directory: app
 
       # Step 4: Build the JAR
       - name: Build JAR
         run: mvn clean package -DskipTests
+        working-directory: app
 
       # Step 5: Authenticate to AWS using secrets stored in GitHub
       - name: Configure AWS credentials
