@@ -24,6 +24,16 @@ class HelloControllerTest {
     @Test
     void homeEndpointShouldReturnMessage() {
         String response = restTemplate.getForObject("http://localhost:" + port + "/", String.class);
-        assertThat(response).isEqualTo("Hello from Spring Boot CI/CD Pipeline!");
+        assertThat(response).isEqualTo("Welcome to my CI/CD Pipeline Project!");
+    }
+
+    @Test
+    void errorTestEndpointShouldReturn500() {
+        try {
+            restTemplate.getForObject("http://localhost:" + port + "/error-test", String.class);
+        } catch (org.springframework.web.client.HttpServerErrorException e) {
+            assertThat(e.getStatusCode().value()).isEqualTo(500);
+            assertThat(e.getResponseBodyAsString()).isEqualTo("Test error generated");
+        }
     }
 }
